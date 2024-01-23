@@ -12,16 +12,18 @@ For this project, I have created an application that an employee can use to gene
 1. Click on 'Generate Password' button.
 
 <p align="center">
-  <img width="500" height="400" src="https://github.com/HJandu/password_generator/blob/main/images/05-javascript-challenge-demo.png">
+  <img width="500" height="300" src="https://github.com/HJandu/password_generator/blob/main/images/05-javascript-challenge-demo.png">
 </p>
-
 
 2. You are then asked, how long you wish the password to be.
    <p align="center">
-     <img width="500" height="400" src="https://github.com/HJandu/password_generator/blob/main/images/first_box.jpg">
+     <img width="500" height="300" src="https://github.com/HJandu/password_generator/blob/main/images/first_box.jpg">
    </p>
+If the user does not input a number or inputs less than 8 characters or inputs more than 128 characters , then the following messages will appear on the screen. <br>
+<img width="500" height="300" src="https://github.com/HJandu/password_generator/blob/main/images/length.jpg">
+<img width="500" height="300" src="https://github.com/HJandu/password_generator/blob/main/images/must_be_number.jpg">
 
-Present a series of prompts for password criteria:
+
 
 Length of password:
 
