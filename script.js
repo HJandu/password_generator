@@ -97,40 +97,40 @@ function getPasswordOptions() {
 
   // Conditional statement to check if password length is a number. Prompts end if this evaluates false
   if (isNaN(length)) {
-    alert('Password length must be provided as a number');
+    alert('Password length must be provided as a number. Press OK to try again.');
     return;
   }
 
   // Conditional statement to check if password length is at least 8 characters long. Prompts end if this evaluates false
   if (length < 8) {
-    alert('Password length must be at least 8 characters');
+    alert('Password length must be at least 8 characters. Press OK to try again.');
     return;
   }
 
   // Conditional statement to check if password length is less than 128 characters long. Prompts end if this evaluates false
   if (length > 128) {
-    alert('Password length must less than 129 characters');
+    alert('Password length must be less than 129 characters');
     return;
   }
 
   // Variable to store boolean regarding the inclusion of special characters
   var hasSpecialCharacters = confirm(
-    'Click OK to confirm including special characters.'
+    'Click OK if you would like to include special characters in your password.'
   );
 
   // Variable to store boolean regarding the inclusion of numeric characters
   var hasNumericCharacters = confirm(
-    'Click OK to confirm including numeric characters.'
+    'Click OK if you would like to include numeric characters in your password.'
   );
 
   // Variable to store boolean regarding the inclusion of lowercase characters
   var hasLowerCasedCharacters = confirm(
-    'Click OK to confirm including lowercase characters.'
+    'Click OK if you would like to include lowercase characters in your password.'
   );
 
   // Variable to store boolean regarding the inclusion of uppercase characters
   var hasUpperCasedCharacters = confirm(
-    'Click OK to confirm including uppercase characters.'
+    'Click OK if you would like to include uppercase characters in your password.'
   );
 
   // Conditional statement to check if user does not include any types of characters. Password generator ends if all four variables evaluate to false
@@ -140,7 +140,7 @@ function getPasswordOptions() {
     hasLowerCasedCharacters === false &&
     hasUpperCasedCharacters === false
   ) {
-    alert('Must select at least one character type');
+    alert('You must select at least one character type to generate a password.');
     return;
   }
 
@@ -223,28 +223,3 @@ function writePassword() {
 generateBtn.addEventListener('click', writePassword);
 
 
-// //switch (arrayType) {
-//   case 0:
-//     if(passOptions.specialCharacters === "N") {
-//       break;
-//     }
-//     //use special
-//     value = getRandom(specialCharacters)
-//     pass = pass.concat(specialCharacters[value]);
-//     break;
-//   case 1:
-//     //use numeric
-//     value = getRandom(numericCharacters)
-//     pass = pass.concat(numericCharacters[value]);
-//     break;
-//   case 2:
-//     //use lower
-//     value = getRandom(lowerCasedCharacters)
-//     pass = pass.concat(lowerCasedCharacters[value]);
-//     break;
-//   case 3:
-//     //use upper
-//     value = getRandom(upperCasedCharacters)
-//     pass = pass.concat(upperCasedCharacters[value]);
-//     break;
-// }
