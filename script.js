@@ -90,16 +90,121 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
+  // Variable to store length of password from user input
+  var length = parseInt(
+    prompt('How many characters would you like to have in your password?')
+  );
+
+  // Conditional statement to check if password length is a number. Prompts end if this evaluates false
+  if (isNaN(length)) {
+    alert('Password length must be provided as a number');
+    return;
+  }
+
+  // Conditional statement to check if password length is at least 8 characters long. Prompts end if this evaluates false
+  if (length < 8) {
+    alert('Password length must be at least 8 characters');
+    return;
+  }
+
+  // Conditional statement to check if password length is less than 128 characters long. Prompts end if this evaluates false
+  if (length > 128) {
+    alert('Password length must less than 129 characters');
+    return;
+  }
+
+  // Variable to store boolean regarding the inclusion of special characters
+  var hasSpecialCharacters = confirm(
+    'Click OK to confirm including special characters.'
+  );
+
+  // Variable to store boolean regarding the inclusion of numeric characters
+  var hasNumericCharacters = confirm(
+    'Click OK to confirm including numeric characters.'
+  );
+
+  // Variable to store boolean regarding the inclusion of lowercase characters
+  var hasLowerCasedCharacters = confirm(
+    'Click OK to confirm including lowercase characters.'
+  );
+
+  // Variable to store boolean regarding the inclusion of uppercase characters
+  var hasUpperCasedCharacters = confirm(
+    'Click OK to confirm including uppercase characters.'
+  );
+
+  // Conditional statement to check if user does not include any types of characters. Password generator ends if all four variables evaluate to false
+  if (
+    hasSpecialCharacters === false &&
+    hasNumericCharacters === false &&
+    hasLowerCasedCharacters === false &&
+    hasUpperCasedCharacters === false
+  ) {
+    alert('Must select at least one character type');
+    return;
+  }
+
+  // Object to store user input
+  var passwordOptions = {
+    length: length,
+    hasSpecialCharacters: hasSpecialCharacters,
+    hasNumericCharacters: hasNumericCharacters,
+    hasLowerCasedCharacters: hasLowerCasedCharacters,
+    hasUpperCasedCharacters: hasUpperCasedCharacters
+  };
+
+  return passwordOptions;
+
 
 }
 
-// Function for getting a random element from an array
+// Function for getting a random element from an array above
 function getRandom(arr) {
+  var randIndex = Math.floor(Math.random() * arr.length);
+  var randElement = arr[randIndex];
+
+  return randElement;
 
 }
 
 // Function to generate password with user input
 function generatePassword() {
+  var options = getPasswordOptions();
+  var result = [];
+  var possibleCharacters = [];
+  var guaranteedCharacters = [];
+
+  if (options.hasSpecialCharacters) {
+    possibleCharacters = possibleCharacters.concat(specialCharacters);
+    guaranteedCharacters.push(getRandom(specialCharacters));
+  }
+
+  if (options.hasNumericCharacters) {
+    possibleCharacters = possibleCharacters.concat(numericCharacters);
+    guaranteedCharacters.push(getRandom(numericCharacters));
+  }
+
+  if (options.hasLowerCasedCharacters) {
+    possibleCharacters = possibleCharacters.concat(lowerCasedCharacters);
+    guaranteedCharacters.push(getRandom(lowerCasedCharacters));
+  }
+
+  if (options.hasUpperCasedCharacters) {
+    possibleCharacters = possibleCharacters.concat(upperCasedCharacters);
+    guaranteedCharacters.push(getRandom(upperCasedCharacters));
+  }
+
+  for (var i = 0; i < options.length; i++) {
+    var possibleCharacter = getRandom(possibleCharacters);
+
+    result.push(possibleCharacter);
+  }
+
+  for (var i = 0; i < guaranteedCharacters.length; i++) {
+    result[i] = guaranteedCharacters[i];
+  }
+// join fucntion- joins all elements of an array into a string
+  return result.join('');
 
 }
 
@@ -116,3 +221,30 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+
+
+// //switch (arrayType) {
+//   case 0:
+//     if(passOptions.specialCharacters === "N") {
+//       break;
+//     }
+//     //use special
+//     value = getRandom(specialCharacters)
+//     pass = pass.concat(specialCharacters[value]);
+//     break;
+//   case 1:
+//     //use numeric
+//     value = getRandom(numericCharacters)
+//     pass = pass.concat(numericCharacters[value]);
+//     break;
+//   case 2:
+//     //use lower
+//     value = getRandom(lowerCasedCharacters)
+//     pass = pass.concat(lowerCasedCharacters[value]);
+//     break;
+//   case 3:
+//     //use upper
+//     value = getRandom(upperCasedCharacters)
+//     pass = pass.concat(upperCasedCharacters[value]);
+//     break;
+// }
